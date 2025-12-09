@@ -14,8 +14,9 @@ final class HomeController extends AbstractController
     {
         //input data
         $data = [
-            'language' => 'english',
+            'locale' => 'en_US',
             'seed' => 123456,
+            'currentPage' => 1,
             'avgLikes' => 5
         ];
 

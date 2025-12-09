@@ -693,29 +693,42 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *     generate_final_classes?: bool, // Default: true
  *     generate_final_entities?: bool, // Default: false
  * }
+ * @psalm-type InterventionImageConfig = array{
+ *     driver?: scalar|null, // Default: "Intervention\\Image\\Drivers\\Gd\\Driver"
+ *     options?: array{
+ *         autoOrientation?: bool, // Default: true
+ *         decodeAnimation?: bool, // Default: true
+ *         blendingColor?: scalar|null, // Default: "ffffff"
+ *         strip?: bool, // Default: false
+ *     },
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
  *     services?: ServicesConfig,
  *     framework?: FrameworkConfig,
+ *     intervention_image?: InterventionImageConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
  *         maker?: MakerConfig,
+ *         intervention_image?: InterventionImageConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
+ *         intervention_image?: InterventionImageConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
+ *         intervention_image?: InterventionImageConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,
