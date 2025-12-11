@@ -39,7 +39,11 @@ class FakerSong extends \Faker\Provider\Base
 
     public function songLyrics(): string
     {
-        return $this->generator->realText();
+        $lyrics = $this->generator->realText(1000);
+        $sentences = preg_split('/(?<=[.!?,])\s+/', $lyrics);
+        $sentences = array_slice($sentences, 0, 12);
+
+        return implode('<br>', $sentences);
     }
 
 
