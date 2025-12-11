@@ -262,7 +262,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         formats?: array<string, string|list<scalar|null>>,
  *     },
  *     assets?: bool|array{ // Assets configuration
- *         enabled?: bool, // Default: false
+ *         enabled?: bool, // Default: true
  *         strict_mode?: bool, // Throw an exception if an entry is missing from the manifest.json. // Default: false
  *         version_strategy?: scalar|null, // Default: null
  *         version?: scalar|null, // Default: null
@@ -281,7 +281,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         }>,
  *     },
  *     asset_mapper?: bool|array{ // Asset Mapper configuration
- *         enabled?: bool, // Default: false
+ *         enabled?: bool, // Default: true
  *         paths?: array<string, scalar|null>,
  *         excluded_patterns?: list<scalar|null>,
  *         exclude_dotfiles?: bool, // If true, any files starting with "." will be excluded from the asset mapper. // Default: true
@@ -470,7 +470,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *     },
  *     disallow_search_engine_index?: bool, // Enabled by default when debug is enabled. // Default: true
  *     http_client?: bool|array{ // HTTP Client configuration
- *         enabled?: bool, // Default: false
+ *         enabled?: bool, // Default: true
  *         max_host_connections?: int, // The maximum number of connections to a single host.
  *         default_options?: array{
  *             headers?: array<string, mixed>,
@@ -702,12 +702,81 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         strip?: bool, // Default: false
  *     },
  * }
+ * @psalm-type TwigConfig = array{
+ *     form_themes?: list<scalar|null>,
+ *     globals?: array<string, array{ // Default: []
+ *         id?: scalar|null,
+ *         type?: scalar|null,
+ *         value?: mixed,
+ *     }>,
+ *     autoescape_service?: scalar|null, // Default: null
+ *     autoescape_service_method?: scalar|null, // Default: null
+ *     base_template_class?: scalar|null, // Deprecated: The child node "base_template_class" at path "twig.base_template_class" is deprecated.
+ *     cache?: scalar|null, // Default: true
+ *     charset?: scalar|null, // Default: "%kernel.charset%"
+ *     debug?: bool, // Default: "%kernel.debug%"
+ *     strict_variables?: bool, // Default: "%kernel.debug%"
+ *     auto_reload?: scalar|null,
+ *     optimizations?: int,
+ *     default_path?: scalar|null, // The default path used to load templates. // Default: "%kernel.project_dir%/templates"
+ *     file_name_pattern?: list<scalar|null>,
+ *     paths?: array<string, mixed>,
+ *     date?: array{ // The default format options used by the date filter.
+ *         format?: scalar|null, // Default: "F j, Y H:i"
+ *         interval_format?: scalar|null, // Default: "%d days"
+ *         timezone?: scalar|null, // The timezone used when formatting dates, when set to null, the timezone returned by date_default_timezone_get() is used. // Default: null
+ *     },
+ *     number_format?: array{ // The default format options for the number_format filter.
+ *         decimals?: int, // Default: 0
+ *         decimal_point?: scalar|null, // Default: "."
+ *         thousands_separator?: scalar|null, // Default: ","
+ *     },
+ *     mailer?: array{
+ *         html_to_text_converter?: scalar|null, // A service implementing the "Symfony\Component\Mime\HtmlToTextConverter\HtmlToTextConverterInterface". // Default: null
+ *     },
+ * }
+ * @psalm-type SymfonycastsTailwindConfig = array{
+ *     input_css?: list<scalar|null>,
+ *     config_file?: scalar|null, // Path to the tailwind.config.js file // Default: "%kernel.project_dir%/tailwind.config.js"
+ *     binary?: scalar|null, // The tailwind binary to use instead of downloading a new one // Default: null
+ *     binary_version?: scalar|null, // Tailwind CLI version to download - null means the latest version // Default: null
+ *     binary_platform?: "auto"|"linux-arm64"|"linux-arm64-musl"|"linux-x64"|"linux-x64-musl"|"macos-arm64"|"macos-x64"|"windows-x64", // Tailwind CLI platform to download - "auto" will try to detect the platform automatically // Default: "auto"
+ *     postcss_config_file?: scalar|null, // Path to PostCSS config file which is passed to the Tailwind CLI // Default: null
+ *     strict_mode?: bool|null, // When enabled, an exception will be thrown if there are no built assets (default: false in `test` env, true otherwise) // Default: null
+ * }
+ * @psalm-type StimulusConfig = array{
+ *     controller_paths?: list<scalar|null>,
+ *     controllers_json?: scalar|null, // Default: "%kernel.project_dir%/assets/controllers.json"
+ * }
+ * @psalm-type TurboConfig = array{
+ *     broadcast?: bool|array{
+ *         enabled?: bool, // Default: true
+ *         entity_template_prefixes?: list<scalar|null>,
+ *         doctrine_orm?: bool|array{ // Enable the Doctrine ORM integration
+ *             enabled?: bool, // Default: false
+ *         },
+ *     },
+ *     default_transport?: scalar|null, // Default: "default"
+ * }
+ * @psalm-type BabdevPagerfantaConfig = array{
+ *     default_view?: scalar|null, // Default: "default"
+ *     default_twig_template?: scalar|null, // Default: "@BabDevPagerfanta/default.html.twig"
+ *     exceptions_strategy?: array{
+ *         out_of_range_page?: "to_http_not_found"|"custom", // Default: "to_http_not_found"
+ *         not_valid_current_page?: "to_http_not_found"|"custom", // Default: "to_http_not_found"
+ *     },
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
  *     services?: ServicesConfig,
  *     framework?: FrameworkConfig,
  *     intervention_image?: InterventionImageConfig,
+ *     twig?: TwigConfig,
+ *     symfonycasts_tailwind?: SymfonycastsTailwindConfig,
+ *     stimulus?: StimulusConfig,
+ *     turbo?: TurboConfig,
+ *     babdev_pagerfanta?: BabdevPagerfantaConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -715,6 +784,11 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         framework?: FrameworkConfig,
  *         maker?: MakerConfig,
  *         intervention_image?: InterventionImageConfig,
+ *         twig?: TwigConfig,
+ *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
+ *         stimulus?: StimulusConfig,
+ *         turbo?: TurboConfig,
+ *         babdev_pagerfanta?: BabdevPagerfantaConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -722,6 +796,11 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
  *         intervention_image?: InterventionImageConfig,
+ *         twig?: TwigConfig,
+ *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
+ *         stimulus?: StimulusConfig,
+ *         turbo?: TurboConfig,
+ *         babdev_pagerfanta?: BabdevPagerfantaConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -729,6 +808,11 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
  *         intervention_image?: InterventionImageConfig,
+ *         twig?: TwigConfig,
+ *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
+ *         stimulus?: StimulusConfig,
+ *         turbo?: TurboConfig,
+ *         babdev_pagerfanta?: BabdevPagerfantaConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

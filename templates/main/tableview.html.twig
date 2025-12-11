@@ -1,0 +1,96 @@
+<turbo-frame id="songs-list">
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+        <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-t border-default-medium">
+        <tr>
+            <th scope="col" class="py-3 font-medium">
+            </th>
+            <th scope="col" class="py-3 font-bold">
+                #
+            </th>
+            <th scope="col" class="px-6 py-3 font-bold">
+                Song
+            </th>
+            <th scope="col" class="px-6 py-3 font-bold">
+                Artist
+            </th>
+            <th scope="col" class="px-6 py-3 font-bold">
+                Album
+            </th>
+            <th scope="col" class="px-6 py-3 font-bold">
+                Genre
+            </th>
+        </tr>
+        </thead>
+        <tbody data-controller="details">
+        {% for song in songs %}
+            <tr id="table-column-header-{{ song.id }}" data-action="click->details#toggle" class="cursor-pointer hover:bg-gray-200 bg-neutral-primary-soft border-b border-default" data-accordion-target="#table-column-body-{{ song.id }}" aria-expanded="false" aria-controls="table-column-body-{{ song.id }}">
+                <td class="pl-[10px] max-w-[15px]">
+                    <svg data-accordion-icon class="w-5 h-5 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/></svg>
+                </td>
+                <td class="py-4">
+                    {{ song.id }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ song.title }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ song.artist }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ song.album }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ song.genre }}
+                </td>
+            </tr>
+            <tr id="table-column-body-{{ song.id }}" class="hidden border border-s-0 border-e-0 border-t-0 border-b-default" aria-labelledby="table-column-header-{{ song.id }}">
+                <td colspan="6">
+                    <div class="py-5 px-10 flex space-x-10">
+                        <div>
+                            <img src="upload/{{song.imageFilePath}}" width="200" height="200" alt="poster">
+                            <div class="mt-2.5">
+                                    <span class="inline-flex items-center bg-brand-softer border border-brand-subtle text-fg-brand-strong text-sm font-medium leading-none px-2 py-1 rounded">
+                                        <svg class="w-3.5 h-3.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" />
+                                        </svg>
+                                        {{ song.likes }} likes
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="space-y-5 w-full">
+                            <div class="text-[26px] font-bold">{{song.title}}</div>
+                            <div class="text-[20px] font-bold">
+                                <span class="text-[18px] text-gray-500">from</span> {{song.album}}
+                                <span class="text-[18px] text-gray-500">by</span> {{song.artist}}
+                            </div>
+                            <div class="p-6 bg-neutral-secondary text-medium text-body rounded-base w-full">
+                                <h3 class="text-lg font-semibold text-heading mb-4">Lyrics</h3>
+                                {% set sentences = song.lyrics|split('<br>') %}
+                                {% set grouped_sentences = sentences|batch(4) %}
+                                {% for group in grouped_sentences %}
+                                    <p class="mb-3">
+                                    {% for sentence in group %}
+                                        <p>{{ sentence|trim }}</p>
+                                    {% endfor %}
+                                    </p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="flex items-center m-6 space-x-4">
+        {% if songs.hasPreviousPage %}
+            <a href="{{ pagerfanta_page_url(songs, songs.previousPage) }}" class="block py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-400">Previous</a>
+        {% endif %}
+        {% if songs.hasNextPage %}
+            <a href="{{ pagerfanta_page_url(songs, songs.nextPage) }}" class="block py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-400">Next</a>
+        {% endif %}
+        <div class="ml-4">
+            Page {{ songs.currentPage }}/{{ songs.nbPages }}
+        </div>
+    </div>
+</turbo-frame>
