@@ -26,16 +26,8 @@ final class HomeController extends AbstractController
         #[MapQueryParameter] int $isGalleryViewChecked = 1,
     ): Response
     {
-//        //input data
-//        $data = [
-//            'locale' => 'en_US',
-//            'seed' => 123456,
-//            'page' => 1,
-//            'avgLikes' => 5
-//        ];
 
         $songs = $songService->create($locale, $seed, $avgLikes, $page);
-//        $songs = ['1', '2', '1', '2','1', '2','1', '2','1', '2','1', '2','1', '2'];
 
         $pager = Pagerfanta::createForCurrentPageWithMaxPerPage(
             new ArrayAdapter($songs),
@@ -43,15 +35,9 @@ final class HomeController extends AbstractController
             $maxPerPage
         );
 
-//        dd($pager);
-
         return $this->render('main/homepage.html.twig', [
             'songs' => $pager
         ]);
 
-//        return $this->json([
-//            'message' => 'Welcome to your new controller!',
-//            'songs' => $this->json($songs)->getContent(),
-//        ]);
     }
 }
