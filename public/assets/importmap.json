@@ -1,0 +1,74 @@
+{
+    "app": {
+        "path": "\/assets\/app-VqqjLds.js",
+        "type": "js"
+    },
+    "\/assets\/stimulus_bootstrap.js": {
+        "path": "\/assets\/stimulus_bootstrap-xCO4u8H.js",
+        "type": "js"
+    },
+    "\/assets\/@symfony\/stimulus-bundle\/controllers.js": {
+        "path": "\/assets\/@symfony\/stimulus-bundle\/controllers-xOborgo.js",
+        "type": "js"
+    },
+    "\/assets\/@symfony\/ux-turbo\/turbo_controller.js": {
+        "path": "\/assets\/@symfony\/ux-turbo\/turbo_controller-8wQNi2p.js",
+        "type": "js"
+    },
+    "\/assets\/controllers\/autosubmit_controller.js": {
+        "path": "\/assets\/controllers\/autosubmit_controller-gkxoCZV.js",
+        "type": "js"
+    },
+    "\/assets\/controllers\/details_controller.js": {
+        "path": "\/assets\/controllers\/details_controller-axI2rAT.js",
+        "type": "js"
+    },
+    "\/assets\/controllers\/displayview_controller.js": {
+        "path": "\/assets\/controllers\/displayview_controller-1LJL4Xy.js",
+        "type": "js"
+    },
+    "\/assets\/controllers\/hello_controller.js": {
+        "path": "\/assets\/controllers\/hello_controller-VYgvytJ.js",
+        "type": "js"
+    },
+    "\/assets\/controllers\/csrf_protection_controller.js": {
+        "path": "\/assets\/controllers\/csrf_protection_controller-6ynUAeX.js",
+        "type": "js"
+    },
+    "\/assets\/styles\/app.css": {
+        "path": "\/assets\/styles\/app-45PKqhe.css",
+        "type": "css"
+    },
+    "flowbite": {
+        "path": "\/assets\/vendor\/flowbite\/flowbite.index-VNs11D_.js",
+        "type": "js"
+    },
+    "@popperjs\/core": {
+        "path": "\/assets\/vendor\/@popperjs\/core\/core.index-QBO6pjP.js",
+        "type": "js"
+    },
+    "flowbite-datepicker": {
+        "path": "\/assets\/vendor\/flowbite-datepicker\/flowbite-datepicker.index-G1RCbwd.js",
+        "type": "js"
+    },
+    "flowbite\/dist\/flowbite.min.css": {
+        "path": "\/assets\/vendor\/flowbite\/dist\/flowbite.min-NSTfAi5.css",
+        "type": "css"
+    },
+    "@hotwired\/stimulus": {
+        "path": "\/assets\/vendor\/@hotwired\/stimulus\/stimulus.index-S4zNcea.js",
+        "type": "js"
+    },
+    "@symfony\/stimulus-bundle": {
+        "path": "\/assets\/@symfony\/stimulus-bundle\/loader-V1GtHuK.js",
+        "type": "js"
+    },
+    "@hotwired\/turbo": {
+        "path": "\/assets\/vendor\/@hotwired\/turbo\/turbo.index-pT15T6h.js",
+        "type": "js"
+    },
+    "debounce": {
+        "path": "\/assets\/vendor\/debounce\/debounce.index-mtlZkH4.js",
+        "type": "js"
+    }
+}
