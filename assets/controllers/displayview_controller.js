@@ -18,7 +18,7 @@ export default class extends Controller {
         this.activeBtnStyle(this.galleryViewBtnTarget)
         this.disactiveBtnStyle(this.tableViewBtnTarget)
         this.galleryViewSelectedTarget.value = 1
-        this.activeFirstSubmit(1)
+        this.activeFirstSubmit(5)
 
     }
 
