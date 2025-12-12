@@ -1,6 +1,7 @@
 .idea/
 node_modules/
-public/upload/*
+public/upload/audio/*
+public/upload/images/*
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

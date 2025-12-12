@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Song;
+use App\Generator\AudioCreator;
 use App\Generator\FakerSong;
 use App\Generator\ImageCretor;
 use Faker;
@@ -13,6 +14,7 @@ class SongService
     {
         $faker = $this->fakerSetup($locale, $seed, $page);
         $imageCretor = new ImageCretor();
+        $audioCreator = new AudioCreator();
 
         $likes = $faker->shuffle($this->generateLikes($avgLikes, $count));
 
@@ -24,11 +26,11 @@ class SongService
 
             $song->setId($i+1);
             $song->setTitle($faker->songTitle());
-            $song->setArtist($songArtist); // Person Name, Band
-            $song->setAlbum($songAlbum); // Album 1 | Single
-            $song->setImageFilePath($imageCretor->imageURLGenerate($faker, $songAlbum, $songArtist));// $this->imageURLGenerate($faker)
-            $song->setGenre($faker->songGenre($locale)); // 'Genre 1'
-            $song->setSongFilePath('src/Song1');
+            $song->setArtist($songArtist);
+            $song->setAlbum($songAlbum);
+            $song->setImageFilePath($imageCretor->imageURLGenerate($faker, $songAlbum, $songArtist));
+            $song->setGenre($faker->songGenre($locale));
+            $song->setSongFilePath($audioCreator->audioURLGenerate($faker, $seed, $i, $locale));
             $song->setLyrics($faker->songLyrics());
             $song->setLikes($likes[$i]);
             $songs[] = $song;

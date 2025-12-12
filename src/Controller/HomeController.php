@@ -21,13 +21,13 @@ final class HomeController extends AbstractController
         #[MapQueryParameter] ?int $seed = 123456,
         #[MapQueryParameter] ?float $avgLikes = 5,
         #[MapQueryParameter] int $page = 1,
-        #[MapQueryParameter] int $count = 1,
+        #[MapQueryParameter] int $count = 15,
         #[MapQueryParameter] int $maxPerPage = 5,
         #[MapQueryParameter] int $isGalleryViewChecked = 1,
     ): Response
     {
 
-        $songs = $songService->create($locale, $seed, $avgLikes, $page);
+        $songs = $songService->create($locale, $seed, $avgLikes, $page, $count);
 
         $pager = Pagerfanta::createForCurrentPageWithMaxPerPage(
             new ArrayAdapter($songs),

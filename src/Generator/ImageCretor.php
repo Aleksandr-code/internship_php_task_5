@@ -28,7 +28,7 @@ class ImageCretor
         });
 
         $imageFilename = $faker->uuid() . '.jpg';
-        $imageFilePath = dirname(__DIR__, 2) . '/public/upload/' . $imageFilename;
+        $imageFilePath = dirname(__DIR__, 2) . '/public/upload/images/' . $imageFilename;
 
         $image->toJpeg()->save($imageFilePath);
         return $imageFilename;
