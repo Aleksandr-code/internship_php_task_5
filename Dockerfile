@@ -9,7 +9,6 @@ WORKDIR /app
 COPY . /app
 
 RUN composer install
-RUN npm install
 
 EXPOSE 80
 
