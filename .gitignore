@@ -1,6 +1,7 @@
 .idea/
 node_modules/
-
+public/upload/audio/*
+public/upload/images/*
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -12,6 +13,5 @@ node_modules/
 ###< symfony/framework-bundle ###
 
 ###> symfony/asset-mapper ###
-/public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###

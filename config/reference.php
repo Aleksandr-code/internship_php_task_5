@@ -802,6 +802,18 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         turbo?: TurboConfig,
  *         babdev_pagerfanta?: BabdevPagerfantaConfig,
  *     },
+ *     "when@production"?: array{
+ *         imports?: ImportsConfig,
+ *         parameters?: ParametersConfig,
+ *         services?: ServicesConfig,
+ *         framework?: FrameworkConfig,
+ *         intervention_image?: InterventionImageConfig,
+ *         twig?: TwigConfig,
+ *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
+ *         stimulus?: StimulusConfig,
+ *         turbo?: TurboConfig,
+ *         babdev_pagerfanta?: BabdevPagerfantaConfig,
+ *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -895,6 +907,7 @@ namespace Symfony\Component\Routing\Loader\Configurator;
  * @psalm-type RoutesConfig = array{
  *     "when@dev"?: array<string, RouteConfig|ImportConfig|AliasConfig>,
  *     "when@prod"?: array<string, RouteConfig|ImportConfig|AliasConfig>,
+ *     "when@production"?: array<string, RouteConfig|ImportConfig|AliasConfig>,
  *     "when@test"?: array<string, RouteConfig|ImportConfig|AliasConfig>,
  *     ...<string, RouteConfig|ImportConfig|AliasConfig>
  * }
