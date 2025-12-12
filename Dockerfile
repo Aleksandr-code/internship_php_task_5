@@ -9,6 +9,10 @@ WORKDIR /app
 COPY . /app
 
 RUN composer install
+RUN chmod 777 -R /app/public/upload
+
+ENV APP_ENV=prod
+ENV APP_DEBUG=false
 
 EXPOSE 80
 
