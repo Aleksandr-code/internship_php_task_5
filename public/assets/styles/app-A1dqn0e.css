@@ -265,6 +265,7 @@
     --animate-spin: spin 1s linear infinite;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --blur-xs: 4px;
+    --blur-sm: 8px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -2359,9 +2360,20 @@
       opacity: 50%;
     }
   }
+  .aria-busy\:blur-sm {
+    &[aria-busy="true"] {
+      --tw-blur: blur(var(--blur-sm));
+      filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+    }
+  }
   .aria-busy\:delay-700 {
     &[aria-busy="true"] {
       transition-delay: 700ms;
+    }
+  }
+  .aria-busy\:delay-1000 {
+    &[aria-busy="true"] {
+      transition-delay: 1000ms;
     }
   }
   .md\:inset-0 {
